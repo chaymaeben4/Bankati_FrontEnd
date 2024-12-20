@@ -1,0 +1,45 @@
+
+                    <div class="card-pages-link" style="width: 80%; margin-right: 0;">
+                        <ul>
+                            <li class="active">
+                                <a href="card-1-gold-platinum.html">
+                                    Mon Solde : 10000 DH
+                                </a>
+                            </li>
+                            <li class="portefeuilles-container">
+                                <a href="#" class="toggle-link" (click)="togglePortefeuilles($event)">
+                                    Mes Portefeuilles <span class="icon-next2"></span>
+                                </a>
+                                <div *ngIf="isVisible" class="portefeuilles-list">
+                                    <ul>
+                                        <li *ngFor="let portefeuille of portefeuilles" class="portefeuille-item" routerLink="/client/portefeuilles">
+                                            Portefeuille {{ portefeuille }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="card-3-money-back.html">
+                                    Ma Carte Virtuelle <span class="icon-next2"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="card-4-monthly-emi.html">
+                                    Monthly EMI Card <span class="icon-next2"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="card-5-cougar-club.html">
+                                    Cougar Club Card <span class="icon-next2"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="card-6-rewards-earning.html">
+                                    Rewards Earning Card <span class="icon-next2"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--End Card Pages Link-->
+
+
