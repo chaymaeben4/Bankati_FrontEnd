@@ -8,17 +8,21 @@
                     </div>
                     <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
+                            <label for="nom">Votre Nom Complet</label>
+                            <input id="nom" type="text"  placeholder="Nom Complet" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Votre Email</label>
+                            <input id="email" type="email"  placeholder="Email" />
+                        </div>
+                        <div class="form-group">
                             <label for="card">Sélectionnez une carte virtuelle</label>
                             <select id="card" formControlName="cardId" required>
                                 <option value="" disabled selected>-- Choisissez une carte --</option>
                                 <option *ngFor="let card of virtualCards" [value]="card.cvv">
-                                    **** **** **** {{ card.cvv }} ({{ card.devise }})
+                                    **** **** **** {{ card.numero_carte }} ({{ card.devise }})
                                 </option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="amount">Montant à Payer</label>
-                            <input id="amount" type="number" formControlName="amount" placeholder="Entrez le montant" required />
                         </div>
                         <div class="form-group">
                             <label for="currency">Devise du Paiement</label>
@@ -30,9 +34,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="recipient">Informations du Destinataire (Facultatif)</label>
-                            <input id="recipient" type="text" formControlName="recipient" placeholder="Nom du marchand" />
+                            <label for="amount">Montant à Payer</label>
+                            <input id="amount" type="number" formControlName="amount" placeholder="Entrez le montant" required />
                         </div>
+
+
                         <div class="actions">
                             <button type="submit" class="btn-one" [disabled]="paymentForm.invalid">Effectuer le Paiement</button>
                             <button type="button" class="btn-two" >Annuler</button>

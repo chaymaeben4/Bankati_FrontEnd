@@ -8,8 +8,7 @@ import {CarteVirtuelleDTO} from "../../classes/carte-virtuelle";
 })
 export class PaiementCarteService {
 
-  private apiUrl = 'http://localhost:8083/api/virtual-card';  // Change the base URL as needed
-  private apiUrl1 = 'http://localhost:8082/api/cartes-virtuelles/utilisateur';  // Change the base URL as needed
+  private apiUrl = 'http://localhost:8082/api/cartes-virtuelles';  // Change the base URL as needed
 
 
   constructor(private http: HttpClient) { }
@@ -19,10 +18,10 @@ export class PaiementCarteService {
         .set('toCurrency', toCurrency)
         .set('amount', amount.toString());
 
-    return this.http.post<string>(`${this.apiUrl}/${cvv}`, null, { params });
+    return this.http.post<string>(`${this.apiUrl}/virtual-card/${cvv}`, null, { params });
   }
 
   getVirtualCardsByUserId(utilisateurId: number): Observable<CarteVirtuelleDTO[]> {
-    return this.http.get<CarteVirtuelleDTO[]>(`${this.apiUrl1}/${utilisateurId}`);
+    return this.http.get<CarteVirtuelleDTO[]>(`${this.apiUrl}/utilisateur/${utilisateurId}`);
   }
 }

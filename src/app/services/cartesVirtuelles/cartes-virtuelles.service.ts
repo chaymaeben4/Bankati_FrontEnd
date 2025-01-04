@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, throwError} from "rxjs";
 import {CarteVirtuelleDTO} from "../../classes/carte-virtuelle";
+import {Transaction} from "../../classes/transaction/transaction";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,9 @@ export class CartesVirtuellesService {
         );
     }
 
-
+    getTransactionsByCvv(cvv: string): Observable<Transaction[]> {
+        return this.http.get<Transaction[]>(`${this.apiUrl}/virtual-card/${cvv}`);
+    }
 
 
 }

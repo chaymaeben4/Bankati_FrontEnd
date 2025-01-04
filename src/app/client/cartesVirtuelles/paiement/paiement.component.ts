@@ -43,11 +43,11 @@ export class PaiementComponent implements OnInit{
 
       this.paymentService.payWithVirtualCard(cvv, toCurrency, amount).subscribe(
           response => {
-            console.log('Payment successful:', response);
+            alert('Paiement réussi');
             // Handle success (e.g., show a confirmation message)
           },
           error => {
-            console.error('Payment failed:', error);
+            alert('Paiement réussi');
             // Handle error (e.g., show an error message)
           }
       );

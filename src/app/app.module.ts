@@ -11,6 +11,7 @@ import { FooterComponent } from './home-page/shared/footer/footer.component';
 import { SliderComponent } from './home-page/slider/slider.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,7 @@ import {ReactiveFormsModule} from "@angular/forms";
         HttpClientModule,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [DatePipe],
     exports: [
         HeaderComponent
     ],

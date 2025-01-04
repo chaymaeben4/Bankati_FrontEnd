@@ -37,23 +37,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>01/12/2024</td>
-                                <td>Achat en ligne</td>
-                                <td>-200 MAD</td>
-                                <td>Complété</td>
-                            </tr>
-                            <tr>
-                                <td>10/11/2024</td>
-                                <td>Remboursement</td>
-                                <td>+100 MAD</td>
-                                <td>Complété</td>
-                            </tr>
-                            <tr>
-                                <td>05/11/2024</td>
-                                <td>Achat magasin</td>
-                                <td>-50 MAD</td>
-                                <td>En attente</td>
+                            <tr *ngFor="let transaction of transactions">
+                                <td>{{ formatDate(transaction.date) }}</td>
+                                <td>{{ 'Transaction ' + transaction.id }}</td>
+                                <td>{{ formatMontant(transaction.montant) }} {{carteDetails.devise}}</td>
+                                <td>{{ formatStatut(transaction.status) }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -61,7 +49,6 @@
 
                     <!-- Actions -->
                     <div class="actions">
-                        <button type="button" class="btn-one" (click)="onEditLimit()">Modifier la Limite</button>
                         <button type="button" class="btn-two" (click)="onBlockCard()">Bloquer/Désactiver</button>
                         <button type="button" class="btn-three" (click)="onDeleteCard()">Supprimer</button>
                     </div>
