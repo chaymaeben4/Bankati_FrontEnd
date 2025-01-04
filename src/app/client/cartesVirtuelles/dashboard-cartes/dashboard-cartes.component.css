@@ -1,0 +1,130 @@
+.dashboard-style {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-style__content .title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-style__content .title h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Table Styles */
+.cards-list .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cards-list .table th,
+.cards-list .table td {
+    padding: 2px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.cards-list .table th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+.cards-list .table td span.active {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.cards-list .table td span.blocked {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.cards-list .table td span.expired {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.cards-list .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.cards-list .table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Buttons */
+.btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-small.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-small.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-small.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-small.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Actions */
+.actions-box {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.actions-box .btn-one {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.actions-box .btn-one:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .actions-box {
+        margin-top: 30px;
+    }
+
+    .cards-list .table th,
+    .cards-list .table td {
+        font-size: 12px;
+    }
+
+    .btn-small {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    .actions-box .btn-one {
+        width: 100%;
+    }
+}

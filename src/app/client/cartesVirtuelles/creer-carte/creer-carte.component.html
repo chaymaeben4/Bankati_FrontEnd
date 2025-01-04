@@ -1,0 +1,70 @@
+<section class="create-card">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-xl-4">
+                <app-sidebar></app-sidebar>
+            </div>
+            <!-- Main Content -->
+            <div class="col-xl-8">
+                <div class="create-card__content">
+                    <div class="title">
+                        <h2>Créer une Carte Virtuelle</h2>
+                    </div>
+                    <form [formGroup]="createCardForm" (ngSubmit)="onSubmit()" class="default-form">
+                        <div class="row">
+                            <!-- Devise de la carte -->
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <div class="label-box">
+                                        <label for="currency">Devise de la Carte<span>*</span></label>
+                                    </div>
+                                    <select id="currency" formControlName="currency" required>
+                                        <option value="" disabled selected>-- Sélectionnez une devise --</option>
+                                        <option value="MAD">MAD</option>
+                                        <option value="USD">USD</option>
+                                        <option value="EUR">EUR</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Limite maximale -->
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <div class="label-box">
+                                        <label for="limit">Limite Maximale<span>*</span></label>
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="number" id="limit" formControlName="limit" placeholder="Entrez la limite (ex : 5000 MAD)" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Durée de validité -->
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <div class="label-box">
+                                        <label for="validity">Durée de Validité<span>*</span></label>
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="date" id="validity" formControlName="validity" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="button-box">
+                                    <button type="submit" class="btn-one" [disabled]="createCardForm.invalid">
+                                        <span class="txt">Créer la Carte</span>
+                                    </button>
+                                    <button type="button" class="btn-two" (click)="onCancel()">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

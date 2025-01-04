@@ -1,0 +1,99 @@
+/* Styles généraux */
+.create-card {
+    padding: 20px 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.create-card .title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.create-card .title h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Formulaire */
+.default-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.default-form .form-group {
+    margin-bottom: 15px;
+}
+
+.default-form .label-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.default-form .input-box input, .default-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.default-form .input-box input:focus, .default-form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Boutons */
+.button-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-box .btn-one, .button-box .btn-two {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-box .btn-one {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.button-box .btn-one:hover {
+    background-color: #0056b3;
+}
+
+.button-box .btn-two {
+    background-color: #6c757d;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+.button-box .btn-two:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .button-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-box .btn-one, .button-box .btn-two {
+        width: 100%;
+    }
+}

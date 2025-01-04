@@ -2,25 +2,37 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ClientRoutingModule } from './client-routing.module';
-import { PaiementMultiDeviseComponent } from './paiement-multi-devise/paiement-multi-devise.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {PortefeuillesComponent} from "./portefeuilles/portefeuilles.component";
-import {AppModule} from "../app.module";
 import {HeaderComponent} from "./shared/header/header.component";
 import {FooterComponent} from "./shared/footer/footer.component";
+import { TransfertArgentComponent } from './transfert-argent/transfert-argent.component';
+import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DashboardCartesComponent } from './cartesVirtuelles/dashboard-cartes/dashboard-cartes.component';
+import { CreerCarteComponent } from './cartesVirtuelles/creer-carte/creer-carte.component';
+import { DetailsComponent } from './cartesVirtuelles/details/details.component';
+import { PaiementComponent } from './cartesVirtuelles/paiement/paiement.component';
+import { CreerPaiementRecurrentComponent } from './paiements_recurrents/creer-paiement-recurrent/creer-paiement-recurrent.component';
 
 
 @NgModule({
   declarations: [
-    PaiementMultiDeviseComponent,
     SidebarComponent,
     PortefeuillesComponent,
       HeaderComponent,
-      FooterComponent
+      FooterComponent,
+      TransfertArgentComponent,
+      DashboardCartesComponent,
+      CreerCarteComponent,
+      DetailsComponent,
+      PaiementComponent,
+      CreerPaiementRecurrentComponent
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
+    ReactiveFormsModule,
+      FormsModule
   ]
 })
 export class ClientModule { }

@@ -1,0 +1,74 @@
+<section class="card-details">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-xl-4">
+                <app-sidebar></app-sidebar>
+            </div>
+            <!-- Main Content -->
+            <div class="col-xl-8">
+                <div class="card-details__content">
+                    <div class="title">
+                        <h2>Détails de la Carte Virtuelle</h2>
+                    </div>
+                    <div class="card-info">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <p><strong>Numéro de Carte :</strong> {{carteDetails.numero_carte}}</p>
+                                <p><strong>CVV :</strong> {{carteDetails.cvv}}</p>
+                                <p><strong>Devise :</strong> {{carteDetails.devise}}</p>
+                                <p><strong>Limite Actuelle :</strong> {{carteDetails.limite}} {{carteDetails.devise}}</p>
+<!--                                <p><strong>Date de Création :</strong> {{carteDetails.date_expiration}}</p>-->
+                                <p><strong>Date d'Expiration :</strong> {{carteDetails.date_expiration}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transaction History -->
+                    <div class="transaction-history">
+                        <h3>Historique des Transactions</h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Montant</th>
+                                <th>Statut</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>01/12/2024</td>
+                                <td>Achat en ligne</td>
+                                <td>-200 MAD</td>
+                                <td>Complété</td>
+                            </tr>
+                            <tr>
+                                <td>10/11/2024</td>
+                                <td>Remboursement</td>
+                                <td>+100 MAD</td>
+                                <td>Complété</td>
+                            </tr>
+                            <tr>
+                                <td>05/11/2024</td>
+                                <td>Achat magasin</td>
+                                <td>-50 MAD</td>
+                                <td>En attente</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="actions">
+                        <button type="button" class="btn-one" (click)="onEditLimit()">Modifier la Limite</button>
+                        <button type="button" class="btn-two" (click)="onBlockCard()">Bloquer/Désactiver</button>
+                        <button type="button" class="btn-three" (click)="onDeleteCard()">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

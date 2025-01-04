@@ -14,11 +14,11 @@
                         <div class="col-xl-12 col-lg-6 col-md-6">
                             <div class="single-cards-box">
                                 <div class="inner-title">
-                                    <h3><a href="#">Portefeuille : MAD </a></h3>
+                                    <h3><a href="#">Portefeuille : {{devise}} </a></h3>
                                 </div>
 
                                 <div class="text-box">
-                                    <p>Solde Actuel : 5000 DH</p>
+                                    <p>Solde Actuel : {{balance}} {{devise}}</p>
 <!--                                    <div class="features-benefits">-->
 <!--                                        <h4>Features & Benefits</h4>-->
 <!--                                        <ul>-->
@@ -29,7 +29,7 @@
 <!--                                    </div>-->
                                 </div>
                                 <div class="btn-box">
-                                    <a class="btn-one" href="" routerLink="/client/paiement-MultiDevise">
+                                    <a class="btn-one" href="" routerLink="/client/transfert_argent">
                                                 <span class="txt">
                                                     Transférer des fonds
                                                     <i class="icon-Vector"></i>

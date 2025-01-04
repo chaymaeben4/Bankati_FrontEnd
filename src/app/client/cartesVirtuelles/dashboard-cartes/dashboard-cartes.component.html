@@ -1,0 +1,66 @@
+<section class="dashboard-style">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-xl-4">
+                <app-sidebar></app-sidebar>
+            </div>
+            <!-- Main Content -->
+            <div class="col-xl-8">
+                <div class="dashboard-style__content">
+                    <div class="title">
+                        <h2>Tableau de Bord des Cartes Virtuelles</h2>
+                    </div>
+                    <!-- Actions -->
+
+                    <!-- Table of Cards -->
+                    <div class="cards-list">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>CVV</th>
+                                <th>Numéro de Carte</th>
+                                <th>Devise</th>
+                                <th>Solde/limite</th>
+                                <th>Date d'Expiration</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let card of virtualCards; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{card.cvv}}</td>
+                                <td>****************</td>
+                                <td>{{card.devise}}</td>
+                                <td>{{ card.limite  }}</td>
+                                <td>{{ card.date_expiration | date:'MM/yyyy' }}</td>
+                                <td>
+                                        <span [ngClass]="{'active': card.status === 'Active', 'blocked': card.status === 'Blocked', 'expired': card.status === 'Expired'}">
+                                            {{ card.status }}
+                                        </span>
+                                </td>
+                                <td>
+                                    <button [routerLink]="['/client/carte-details', card.cvv]" class="btn-small">Voir</button>
+                                    <button class="btn-small btn-danger" (click)="blockCard(card.id)" [disabled]="card.status !== 'Active'">Bloquer</button>
+                                    <button class="btn-small btn-secondary" (click)="deleteCard(card.id)">Supprimer</button>
+                                </td>
+                            </tr>
+                            <tr *ngIf="virtualCards.length === 0">
+                                <td colspan="7" class="text-center">Aucune carte virtuelle disponible</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="actions-box">
+                        <button routerLink="/client/creer-carte" class="btn-one btn-black ">
+                            <span class="txt">Créer une Nouvelle Carte</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

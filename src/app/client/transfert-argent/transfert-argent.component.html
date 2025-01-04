@@ -1,0 +1,74 @@
+<section class="cards-style1">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-xl-4">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-xl-8 order-box-1">
+                <div class="cards-style1__content">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-6 col-md-6">
+                            <div class="call-back-form">
+                                <div class="title">
+                                    <h2>Formulaire de <br>Transfert</h2>
+                                </div>
+                                <form [formGroup]="transferForm" (ngSubmit)="onSubmit()" id="call-back-form" name="call-back_form" class="default-form2">
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="form-group">
+                                                <div class="label-box">
+                                                    <label for="sourceWalletId">Portefeuille Source</label>
+                                                </div>
+                                                <select id="sourceWalletId" formControlName="sourceWalletId" required>
+                                                    <option value="" disabled selected>-- Sélectionnez votre portefeuille --</option>
+                                                    <option value="101">Portefeuille 01 - MAD</option>
+                                                    <option value="102">Portefeuille 02 - USD</option>
+                                                    <option value="103">Portefeuille 03 - EUR</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="form-group">
+                                                <div class="label-box">
+                                                    <label for="receiverWalletId">ID du Portefeuille Destinataire<span>*</span></label>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="text" id="receiverWalletId" formControlName="receiverWalletId" placeholder="Entrez l'ID" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-12">
+                                            <div class="form-group">
+                                                <div class="label-box">
+                                                    <label for="amount">Montant à Transférer<span>*</span></label>
+                                                </div>
+                                                <div class="input-box">
+                                                    <input type="number" id="amount" formControlName="amount" placeholder="Entrez le montant" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="button-box">
+                                                <button type="submit" class="btn-one" [disabled]="transferForm.invalid">
+                                                    <span class="txt">Transférer</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
