@@ -9,6 +9,10 @@ import {AgentModule} from "./agent/agent.module";
 import { HeaderComponent } from './home-page/shared/header/header.component';
 import { FooterComponent } from './home-page/shared/footer/footer.component';
 import { SliderComponent } from './home-page/slider/slider.component';
+import {HttpClientModule} from "@angular/common/http";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -22,11 +26,18 @@ import { SliderComponent } from './home-page/slider/slider.component';
         BrowserModule,
         AppRoutingModule,
         ClientModule,
-        AgentModule
+        AgentModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+      FormsModule,
+
     ],
-    providers: [],
+    providers: [
+    provideAnimationsAsync()
+  ],
     exports: [
-        HeaderComponent
+        HeaderComponent,
+        FooterComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -1,0 +1,50 @@
+<section class="cards-style1">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-xl-4 col-lg-4 sidebar-container">
+        <app-sidebar></app-sidebar>
+      </div>
+
+      <!-- Content Area -->
+      <div class="col-xl-8 col-lg-8">
+        <div class="row">
+          <!-- Répéter les cartes pour chaque dépense -->
+          <div
+            class="col-xl-4 col-lg-6"
+            *ngFor="let expense of depenses"
+          >
+            <div class="single-grow-wealth-style1 single-grow-wealth-style1--instyle2">
+              <div class="text-box">
+                <div class="category">
+                  <p>{{ expense.category }}</p>
+                </div>
+                <h3><a href="#">Dépense </a></h3>
+                <p>{{ expense.description }}</p>
+                <p><strong>Montant :</strong> {{ expense.amount }} {{ expense.devise }}</p>
+              </div>
+              <div class="img-box">
+                <img
+                  src="assets/images/resources/grow-wealth-2-1.jpg"
+                  alt="Image Dépense"
+                />
+              </div>
+              <div class="btns-box">
+                <a href="client/alimenterDepense/{{ expense.id }}">Alimenter <span class="icon-next2"></span></a>
+              </div>
+            </div>
+          </div>
+          <!-- Bouton Créer une Dépense -->
+          <div class="btn-box" style="text-align: right; width: 100%;">
+            <a class="btn-one" href="/client/createDepense">
+              <span class="txt">
+                Créer Une Dépense
+                <i class="icon-Vector"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

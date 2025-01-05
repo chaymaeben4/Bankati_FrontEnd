@@ -2,25 +2,21 @@
                     <div class="card-pages-link" style="width: 80%; margin-right: 0;">
                         <ul>
                             <li class="active">
-                                <a href="card-1-gold-platinum.html">
-                                    Mon Solde : 10000 DH
+                              <div *ngIf="portefeuilleActif">
+                                <a (click)="togglePortefeuilles($event)">
+                                  Solde : {{ portefeuilleActif?.balance | number:'1.2-2' }}
+                                  {{ portefeuilleActif?.devise}}
                                 </a>
+                              </div>
                             </li>
-                            <li class="portefeuilles-container">
-                                <a href="#" class="toggle-link" (click)="togglePortefeuilles($event)">
+                            <li (click)="setActiveItem('portefeuilles')" [class.active]="activeItem === 'portefeuilles'" class="portefeuilles-container">
+                                <a  >
                                     Mes Portefeuilles <span class="icon-next2"></span>
                                 </a>
-                                <div *ngIf="isVisible" class="portefeuilles-list">
-                                    <ul>
-                                        <li *ngFor="let portefeuille of portefeuilles" class="portefeuille-item" routerLink="/client/portefeuilles">
-                                            Portefeuille {{ portefeuille }}
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
                             <li>
-                                <a href="card-3-money-back.html">
-                                    Ma Carte Virtuelle <span class="icon-next2"></span>
+                                <a href="client/depenses">
+                                    Mes Dépenses <span class="icon-next2"></span>
                                 </a>
                             </li>
                             <li>
