@@ -1,0 +1,71 @@
+<section class="cards-style1">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-xl-4">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-xl-8 d-flex justify-content-center">
+        <div class="row w-100"> <!-- Ajout de w-100 pour prendre toute la largeur -->
+          <div class="sec-title text-center w-100"> <!-- Ajout de w-100 -->
+            <div class="sub-title item-center">
+              <div class="border-line"></div>
+              <h4>Créer une dépense</h4>
+            </div>
+          </div>
+          <div class="col-12"> <!-- Utilisation de col-12 pour prendre toute la largeur -->
+            <div class="contact-form">
+              <form id="contact-form" name="contact_form" class="default-form2" [formGroup]="expenseForm" (ngSubmit)="create()">
+                <div class="row">
+                  <!-- Montant -->
+                  <div class="col-xl-12">
+                    <div class="form-group">
+                      <div class="input-box">
+                        <input type="text" name="form_montant" id="montant" placeholder="Montant" formControlName="montant">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Catégorie (Énumération) -->
+                  <div class="col-xl-12">
+                    <div class="form-group">
+                      <div class="input-box">
+                        <select formControlName="category" id="category">
+                          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Description -->
+                  <div class="col-xl-12">
+                    <div class="form-group">
+                      <div class="input-box">
+                        <textarea formControlName="description" id="description" placeholder="Description"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xl-12">
+                    <div class="button-box">
+                      <button class="btn-one" type="submit" [disabled]="!expenseForm.valid">
+                        <span class="txt">
+                          Créer Dépense
+                          <i class="icon-Vector"></i>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

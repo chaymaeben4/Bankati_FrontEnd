@@ -1,42 +1,48 @@
-import {Component, OnInit} from '@angular/core';
-import {PortefeuillesService} from "../../services/PortefeuillesService";
+
+import { Component, OnInit } from '@angular/core';
+import { PortefeuilleService } from '../services/portefeuille-service/portefeuille.service';
+import { PortefeuilleDto } from '../model/Portefeuille.model';
 
 @Component({
   selector: 'app-portefeuilles',
   templateUrl: './portefeuilles.component.html',
-  styleUrl: './portefeuilles.component.css'
+  styleUrl: './portefeuilles.component.css',
 })
-export class PortefeuillesComponent implements OnInit{
-  isVisible: boolean = false;
-  portefeuilleId : number = 8;
-  balance: number | null = 0;
-  devise : string | null = null;
-  portefeuilles: string[] = ["MAD", "EUR", "USD"];
+export class PortefeuillesComponent implements OnInit {
+  portefeuilleActif: PortefeuilleDto | null = null;
+
+  constructor(private portefeuilleService: PortefeuilleService) {}
 
   ngOnInit(): void {
-    this.fetchPortefeuille();
-  }
-  constructor(private portefeuillesService : PortefeuillesService) {
+    // Souscription au portefeuille actif depuis le service
+    this.portefeuilleService.portefeuilleActif$.subscribe((portefeuille) => {
+      this.portefeuilleActif = portefeuille;
+    });
   }
 
-  togglePortefeuilles(event: Event): void {
-    event.preventDefault();
-    this.isVisible = !this.isVisible;
+  // Méthode pour calculer le total des dépenses associées
+  getTotalExpenses(): number {
+    return this.portefeuilleActif?.expenses.reduce((sum, expense) => sum + expense.amount, 0) || 0;
   }
-  fetchPortefeuille(): void {
-    if (this.portefeuilleId) {
-      this.portefeuillesService.getBalanceAndDevise(this.portefeuilleId).subscribe({
-        next: (data) => {
-          this.balance = data.balance;
-          this.devise = data.devise;
-        },
-        error: (err) => {
-          console.error(err);
-          this.balance = null;
-          this.devise = null;
 
-        }
-      });
-    }
+  // Méthode pour calculer le nombre de dépenses associées
+  getExpenseCount(): number {
+    return this.portefeuilleActif?.expenses.length || 0;
   }
+  // fetchPortefeuille(): void {
+  //   if (this.portefeuilleId) {
+  //     this.portefeuillesService.getBalanceAndDevise(this.portefeuilleId).subscribe({
+  //       next: (data) => {
+  //         this.balance = data.balance;
+  //         this.devise = data.devise;
+  //       },
+  //       error: (err) => {
+  //         console.error(err);
+  //         this.balance = null;
+  //         this.devise = null;
+  //
+  //       }
+  //     });
+  //   }
+  // }
 }
