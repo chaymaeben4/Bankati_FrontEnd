@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="card-details">
     <div class="container">
         <div class="row">
@@ -49,11 +50,19 @@
 
                     <!-- Actions -->
                     <div class="actions">
-                        <button type="button" class="btn-two" (click)="onBlockCard()">Bloquer/Désactiver</button>
                         <button type="button" class="btn-three" (click)="onDeleteCard()">Supprimer</button>
                     </div>
                 </div>
             </div>
+        </div>
+
+    </div>
+
+    <div class="alert-overlay" *ngIf="isVisible">
+        <div class="alert-box">
+            <h3 class="alert-title">{{ title }}</h3>
+            <p class="alert-message">{{ message }}</p>
+            <button class="alert-btn" (click)="closeAlert()">OK</button>
         </div>
     </div>
 </section>

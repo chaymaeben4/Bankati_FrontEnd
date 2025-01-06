@@ -12,6 +12,10 @@ import { SliderComponent } from './home-page/slider/slider.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {DatePipe} from "@angular/common";
+import { AproposComponent } from './home-page/apropos/apropos.component';
+import { ServicesComponent } from './home-page/services/services.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
     declarations: [
@@ -19,7 +23,11 @@ import {DatePipe} from "@angular/common";
         HomePageComponent,
         HeaderComponent,
         FooterComponent,
-        SliderComponent
+        SliderComponent,
+        AproposComponent,
+        ServicesComponent,
+        LoginComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -27,11 +35,13 @@ import {DatePipe} from "@angular/common";
         ClientModule,
         AgentModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+
     ],
     providers: [DatePipe],
     exports: [
-        HeaderComponent
+        HeaderComponent,
+        FooterComponent
     ],
     bootstrap: [AppComponent]
 })

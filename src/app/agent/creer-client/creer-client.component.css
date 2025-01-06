@@ -1,0 +1,79 @@
+/* Overlay */
+
+.login-form-overlay {
+    display: flex;
+    position: relative;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 170, 113, 0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+
+}
+
+/* Form Container */
+.login-form-container {
+    width: 80%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Header */
+.login-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-form-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 20px;
+
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-one {
+    padding: 0 10px;
+
+}
+

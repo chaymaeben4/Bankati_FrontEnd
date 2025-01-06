@@ -11,6 +11,19 @@ import {CarteVirtuelleDTO} from "../../../classes/carte-virtuelle";
 })
 export class CreerCarteComponent implements OnInit {
   createCardForm!: FormGroup;
+  isVisible = false;
+  title = '';
+  message = '';
+
+  showAlert(title: string, message: string): void {
+    this.title = title;
+    this.message = message;
+    this.isVisible = true;
+  }
+
+  closeAlert(): void {
+    this.isVisible = false;
+  }
 
   constructor(private fb: FormBuilder, private cardService: CartesVirtuellesService) { }
 
@@ -39,10 +52,9 @@ export class CreerCarteComponent implements OnInit {
 
     this.cardService.createCard(carteVirtuelleDTO).subscribe({
       next: (response) => {
-        alert(response.message); // Affichez le message retourné par le backend
-      },
+        this.showAlert('', response.message);      },
       error: (error) => {
-        console.error(error.message);
+        this.showAlert('Erreur', error.message);
         alert(error.message); // Affichez l'erreur en cas de problème
       }
     });

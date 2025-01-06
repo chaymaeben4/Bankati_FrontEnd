@@ -12,7 +12,20 @@ import {CarteVirtuelleDTO} from "../../../classes/carte-virtuelle";
 export class PaiementComponent implements OnInit{
   paymentForm!: FormGroup;
   virtualCards: CarteVirtuelleDTO[] = [];
+  createCardForm!: FormGroup;
+  isVisible = false;
+  title = '';
+  message = '';
 
+  showAlert(title: string, message: string): void {
+    this.title = title;
+    this.message = message;
+    this.isVisible = true;
+  }
+
+  closeAlert(): void {
+    this.isVisible = false;
+  }
   constructor(private fb: FormBuilder, private paymentService: PaiementCarteService) { }
 
   ngOnInit() {
@@ -43,11 +56,11 @@ export class PaiementComponent implements OnInit{
 
       this.paymentService.payWithVirtualCard(cvv, toCurrency, amount).subscribe(
           response => {
-            alert('Paiement réussi');
+            this.showAlert('', response);
             // Handle success (e.g., show a confirmation message)
           },
           error => {
-            alert('Paiement réussi');
+            this.showAlert('Paiement réussi', '');
             // Handle error (e.g., show an error message)
           }
       );

@@ -700,10 +700,10 @@ select:focus {
     position: relative;
     display: inline-block;
     overflow: hidden;
-    padding-top: 8px;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-bottom: 8px;
+    padding-top: 6px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 6px;
     background-color: transparent;
     color: #ffffff;
     font-size: 17px;
@@ -716,6 +716,7 @@ select:focus {
     transition: all 0.3s linear;
     font-family: var(--thm-font);
     z-index: 2;
+    border-radius: 5px;
 }
 
 .btn-one:before {
@@ -724,8 +725,6 @@ select:focus {
     left: 100%;
     right: -50px;
     content: "";
-    background: var(--thm-black);
-    -webkit-transform: translateX(0px);
     transform: translateX(0px);
     border-radius: 0%;
     transition-duration: 800ms;
@@ -752,10 +751,10 @@ select:focus {
     z-index: -1;
 }
 
-.btn-one:hover:after {
-    transform: scaleX(0);
-    transition-duration: 1500ms;
-}
+/*.btn-one:hover:after {*/
+/*    transform: scaleX(0);*/
+/*    transition-duration: 1500ms;*/
+/*}*/
 
 .btn-one .txt {
     position: relative;
