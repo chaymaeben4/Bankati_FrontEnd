@@ -26,6 +26,7 @@ import { AlimenterDepenseComponent } from './alimenter-depense/alimenter-depense
 import { CreatePortefeuilleComponent } from './create-portefeuille/create-portefeuille.component';
 import { AlimenterPortefeuilleComponent } from './alimenter-portefeuille/alimenter-portefeuille.component';
 import {PortefeuilleListComponent} from "./portefeuille-list/portefeuille-list.component";
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {PortefeuilleListComponent} from "./portefeuille-list/portefeuille-list.c
       AlertDialogComponent,
       AlimenterDepenseComponent,
       CreatePortefeuilleComponent,
-      AlimenterPortefeuilleComponent
+      AlimenterPortefeuilleComponent,
+      NavbarComponent
   ],
   imports: [
     CommonModule,

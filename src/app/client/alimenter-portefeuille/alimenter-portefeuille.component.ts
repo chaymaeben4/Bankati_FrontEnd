@@ -7,6 +7,7 @@ import { AlertDialogComponent } from "../alert-dialog/alert-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import {PortefeuilleService} from "../services/portefeuille-service/portefeuille.service";
 import {PortefeuilleDto} from "../model/Portefeuille.model";
+import {AuthService} from "../../services/auth-service/auth.service";
 
 @Component({
   selector: 'app-alimenter-portefeuille',
@@ -22,6 +23,7 @@ export class AlimenterPortefeuilleComponent implements OnInit {
   portefeuilleActif: PortefeuilleDto | null=null;
 
   constructor(
+    private userService: AuthService,
     private cmiService: CmiService,
     private route: ActivatedRoute,
     private router: Router,
@@ -44,7 +46,7 @@ export class AlimenterPortefeuilleComponent implements OnInit {
   alimenterPortefeuille(): void {
     if (this.alimentationForm.valid) {
       const request = {
-        userId: 1, // Valeur statique pour l'utilisateur (à adapter si nécessaire)
+        userId: this.userService.getUserId(), // Valeur statique pour l'utilisateur (à adapter si nécessaire)
         portefeuilleId: this.portefeuilleId,
         montant: this.alimentationForm.get('montant')?.value
       };

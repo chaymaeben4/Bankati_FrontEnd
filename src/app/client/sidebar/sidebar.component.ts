@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {PortefeuilleService} from "../services/portefeuille-service/portefeuille.service";
 import {PortefeuilleDto} from "../model/Portefeuille.model";
 import {Devise} from "../model/devise.enum";
+import {AuthService} from "../../services/auth-service/auth.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -18,7 +19,7 @@ export class SidebarComponent implements OnInit {
   soldeActif!: number ;
   deviseActif!: Devise;
   portefeuilleActif: PortefeuilleDto | null = null;
-  constructor(private router: Router,private cdr: ChangeDetectorRef,private portefeuilleService: PortefeuilleService) {
+  constructor(private userService:AuthService,private router: Router,private cdr: ChangeDetectorRef,private portefeuilleService: PortefeuilleService) {
   }
 
 
@@ -45,7 +46,7 @@ ngOnInit(): void {
 }
 
   loadPortefeuilles() {
-    this.portefeuilleService.recupererPortefeuilles(1).subscribe(
+    this.portefeuilleService.recupererPortefeuilles(this.userService.getUserId()).subscribe(
       (portefeuilles) => {
         this.portefeuilles = portefeuilles;
         console.log('Portefeuilles récupérés :', this.portefeuilles);
