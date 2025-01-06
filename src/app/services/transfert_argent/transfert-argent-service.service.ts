@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class TransfertArgentService {
 
-  private baseUrl = 'http://localhost:8083/api';
+  private baseUrl = 'http://localhost:8086/api/portefeuilles';
 
   constructor(private http: HttpClient) {}
 

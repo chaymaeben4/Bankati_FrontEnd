@@ -27,6 +27,7 @@ import { CreatePortefeuilleComponent } from './create-portefeuille/create-portef
 import { AlimenterPortefeuilleComponent } from './alimenter-portefeuille/alimenter-portefeuille.component';
 import {PortefeuilleListComponent} from "./portefeuille-list/portefeuille-list.component";
 import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './paiements_recurrents/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { NavbarComponent } from './navbar/navbar.component';
       AlimenterDepenseComponent,
       CreatePortefeuilleComponent,
       AlimenterPortefeuilleComponent,
-      NavbarComponent
+      NavbarComponent,
+      DashboardComponent
   ],
   imports: [
     CommonModule,

@@ -22,7 +22,7 @@ export class TransfertArgentComponent {
     if (this.transferForm.valid) {
       const { sourceWalletId, receiverWalletId, amount } = this.transferForm.value;
 
-      this.transferService.makePayment(8, receiverWalletId, amount)
+      this.transferService.makePayment(1, receiverWalletId, amount)
           .subscribe({
             next: (response) => {
               alert('Transfert réussi !');
