@@ -32,6 +32,8 @@ export class CartesVirtuellesService {
     getTransactionsByCvv(cvv: string): Observable<Transaction[]> {
         return this.http.get<Transaction[]>(`${this.apiUrl}/virtual-card/${cvv}`);
     }
-
+    supprimerCarte(carteId: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/${carteId}`);
+    }
 
 }

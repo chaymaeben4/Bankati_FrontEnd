@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="dashboard-style">
     <div class="container">
         <div class="row">
@@ -11,8 +12,6 @@
                     <div class="title">
                         <h2>Tableau de Bord des Cartes Virtuelles</h2>
                     </div>
-                    <!-- Actions -->
-
                     <!-- Table of Cards -->
                     <div class="cards-list">
                         <table class="table">
@@ -31,30 +30,35 @@
                             <tbody>
                             <tr *ngFor="let card of virtualCards; let i = index">
                                 <td>{{ i + 1 }}</td>
-                                <td>{{card.cvv}}</td>
-                                <td>****************</td>
-                                <td>{{card.devise}}</td>
-                                <td>{{ card.limite  }}</td>
+                                <td>{{ card.cvv }}</td>
+                                <td>**** **** **** {{ card.numero_carte.slice(-4) }}</td>
+                                <td>{{ card.devise }}</td>
+                                <td>{{ card.limite | currency: card.devise }}</td>
                                 <td>{{ card.date_expiration | date:'MM/yyyy' }}</td>
                                 <td>
-                                        <span [ngClass]="{'active': card.status === 'Active', 'blocked': card.status === 'Blocked', 'expired': card.status === 'Expired'}">
+                                        <span class="status" [ngClass]="{
+                                            'status-active': card.status === 'Active',
+                                            'status-blocked': card.status === 'Blocked',
+                                            'status-expired': card.status === 'Expired'
+                                        }">
                                             {{ card.status }}
                                         </span>
                                 </td>
                                 <td>
-                                    <button [routerLink]="['/client/carte-details', card.cvv]" class="btn-small">Voir</button>
-                                    <button class="btn-small btn-danger" (click)="blockCard(card.id)" [disabled]="card.status !== 'Active'">Bloquer</button>
+                                    <button [routerLink]="['/client/carte-details', card.cvv]" class="btn-small btn-primary">Voir</button>
+<!--                                    <button class="btn-small btn-danger" (click)="blockCard(card.id)" [disabled]="card.status !== 'Active'">Bloquer</button>-->
                                     <button class="btn-small btn-secondary" (click)="deleteCard(card.id)">Supprimer</button>
                                 </td>
                             </tr>
                             <tr *ngIf="virtualCards.length === 0">
-                                <td colspan="7" class="text-center">Aucune carte virtuelle disponible</td>
+                                <td colspan="8" class="text-center">Aucune carte virtuelle disponible</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
+                    <!-- Actions -->
                     <div class="actions-box">
-                        <button routerLink="/client/creer-carte" class="btn-one btn-black ">
+                        <button routerLink="/client/creer-carte" class="btn-one">
                             <span class="txt">Créer une Nouvelle Carte</span>
                         </button>
                     </div>
@@ -64,3 +68,150 @@
     </div>
 </section>
 
+<style>
+
+
+    /* Dashboard Styles */
+    .dashboard-style {
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dashboard-style__content .title {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .dashboard-style__content .title h2 {
+        font-size: 26px;
+        font-weight: bold;
+        color: #4a4a4a;
+    }
+
+    /* Table Styles */
+    .cards-list .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .cards-list .table th,
+    .cards-list .table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #eaeaea;
+    }
+
+    .cards-list .table th {
+        background-color: #f7f8fa;
+        color: #555;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .cards-list .table td {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .cards-list .table tr:nth-child(even) {
+        background-color: #fafbfc;
+    }
+
+    .cards-list .table tr:hover {
+        background-color: #f1f5f8;
+    }
+
+    /* Status Styles */
+    .status {
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .status-active {
+        background-color: #d4f4dd;
+        color: #28a745;
+    }
+
+    .status-blocked {
+        background-color: #fff3cd;
+        color: #ffc107;
+    }
+
+    .status-expired {
+        background-color: #f8d7da;
+        color: #dc3545;
+    }
+
+    /* Buttons */
+    .btn-small {
+        padding: 6px 12px;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-small:hover {
+        opacity: 0.9;
+    }
+
+    .btn-small.btn-primary {
+        background-color: #07003f;
+        color: #fff;
+    }
+
+    .btn-small.btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-small.btn-secondary {
+        margin-left: 5px;
+        background-color: #17466c;
+        color: #fff;
+    }
+
+    /* Actions Box */
+    .actions-box {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .actions-box .btn-one {
+        padding: 12px 24px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .actions-box .btn-one:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .cards-list .table th,
+        .cards-list .table td {
+            font-size: 12px;
+        }
+
+        .btn-small {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        .actions-box .btn-one {
+            width: 100%;
+            font-size: 14px;
+        }
+    }
+</style>

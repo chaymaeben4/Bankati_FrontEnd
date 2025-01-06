@@ -55,6 +55,5 @@ import {PortefeuilleListComponent} from "./portefeuille-list/portefeuille-list.c
       FormsModule,
     MatDialogModule,
     MatButton,
-  ]
-})
+  ]})
 export class ClientModule { }

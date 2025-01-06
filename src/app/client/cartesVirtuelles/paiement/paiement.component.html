@@ -48,4 +48,13 @@
             </div>
         </div>
     </div>
+    <!-- alert.component.html -->
+    <div class="alert-overlay" *ngIf="isVisible">
+        <div class="alert-box">
+            <h3 class="alert-title">{{ title }}</h3>
+            <p class="alert-message">{{ message }}</p>
+            <button class="alert-btn" (click)="closeAlert()">OK</button>
+        </div>
+    </div>
+
 </section>

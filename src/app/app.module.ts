@@ -16,6 +16,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import {ClientModule} from "./client/client.module";
 
+import { AproposComponent } from './home-page/apropos/apropos.component';
+import { ServicesComponent } from './home-page/services/services.component';
+import { LoginComponent } from './login/login.component';
+
+
 
 @NgModule({
     declarations: [
@@ -23,7 +28,11 @@ import {ClientModule} from "./client/client.module";
         HomePageComponent,
         HeaderComponent,
         FooterComponent,
-        SliderComponent
+        SliderComponent,
+        AproposComponent,
+        ServicesComponent,
+        LoginComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -31,7 +40,8 @@ import {ClientModule} from "./client/client.module";
         ClientModule,
         AgentModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+
     ],
     providers: [
       DatePipe,

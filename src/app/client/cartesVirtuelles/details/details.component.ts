@@ -4,6 +4,7 @@ import {CartesVirtuellesService} from "../../../services/cartesVirtuelles/cartes
 import {CarteVirtuelleDTO} from "../../../classes/carte-virtuelle";
 import {Transaction} from "../../../classes/transaction/transaction";
 import {DatePipe} from "@angular/common";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-details',
@@ -12,6 +13,20 @@ import {DatePipe} from "@angular/common";
 })
 export class DetailsComponent implements OnInit{
   cvv: string = '';
+  createCardForm!: FormGroup;
+  isVisible = false;
+  title = '';
+  message = '';
+
+  showAlert(title: string, message: string): void {
+    this.title = title;
+    this.message = message;
+    this.isVisible = true;
+  }
+
+  closeAlert(): void {
+    this.isVisible = false;
+  }
   carteDetails: { cvv: string; numero_carte: string; date_expiration: Date; utilisateurId: number; id: number; limite: number, devise : string } = {
     id: 0,
     utilisateurId: 0,
@@ -36,6 +51,7 @@ export class DetailsComponent implements OnInit{
     this.carteService.getCarteDetailsByCvv(this.cvv).subscribe(
         (data) => {
           this.carteDetails = data;
+          console.log(this.carteDetails.id);
         },
         (error) => {
           console.error('Erreur lors de la récupération des détails de la carte :', error);
@@ -53,9 +69,7 @@ export class DetailsComponent implements OnInit{
       );
     }
   }
-  onEditLimit(): void {
-    alert('Modifier la limite de la carte.');
-  }
+
 
   onBlockCard(): void {
     alert('La carte a été bloquée/désactivée.');
@@ -63,7 +77,10 @@ export class DetailsComponent implements OnInit{
 
   onDeleteCard(): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette carte ?')) {
-      alert('La carte a été supprimée.');
+      this.carteService.supprimerCarte(this.carteDetails.id).subscribe({
+        next: () => this.showAlert('','Carte supprimée avec succès.'),
+        error: (err) => alert('Erreur lors de la suppression : ' + err.message),
+      });
     }
   }
 
