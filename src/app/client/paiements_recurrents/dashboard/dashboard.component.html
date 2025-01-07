@@ -1,0 +1,210 @@
+<app-header></app-header>
+<section class="dashboard-style">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-xl-4">
+                <app-sidebar></app-sidebar>
+            </div>
+            <!-- Main Content -->
+            <div class="col-xl-8">
+                <div class="dashboard-style__content">
+                    <div class="title">
+                        <h2>Tableau de Bord des Paiements Recurrents</h2>
+                    </div>
+                    <!-- Table of Cards -->
+                    <div class="cards-list">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Fournisseur</th>
+                                <th>Montant</th>
+                                <th>Devise</th>
+                                <th>Frequence</th>
+                                <th>Méthode de Paiement</th>
+                                <th>Date de Début</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let paiement of paiements; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ paiement.fournisseur }}</td>
+                                <td>{{ paiement.amount }}</td>
+                                <td>{{ paiement.currency }}</td>
+                                <td>{{ paiement.frequency }}</td>
+                                <td>{{paiement.paymentMethod}}  </td>
+                                <td>{{ paiement.startDate | date:'MM/yyyy' }}</td>
+
+
+                                <td>
+                                    <!--                                    <button class="btn-small btn-danger" (click)="blockCard(card.id)" [disabled]="card.status !== 'Active'">Bloquer</button>-->
+                                    <button class="btn-small btn-secondary" >Supprimer</button>
+                                </td>
+                            </tr>
+                            <tr *ngIf="paiements.length === 0">
+                                <td colspan="8" class="text-center">Aucun Enregistrement disponible</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Actions -->
+                    <div class="actions-box">
+                        <button routerLink="/client/generer-paiement-recurrent" class="btn-one">
+                            <span class="txt">Générer Un Paiement Recurrent</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+
+    /* Dashboard Styles */
+    .dashboard-style {
+        padding: 0;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dashboard-style__content .title {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .dashboard-style__content .title h2 {
+        font-size: 26px;
+        font-weight: bold;
+        color: #4a4a4a;
+    }
+
+    /* Table Styles */
+    .cards-list .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .cards-list .table th,
+    .cards-list .table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #eaeaea;
+    }
+
+    .cards-list .table th {
+        background-color: #f7f8fa;
+        color: #555;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .cards-list .table td {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .cards-list .table tr:nth-child(even) {
+        background-color: #fafbfc;
+    }
+
+    .cards-list .table tr:hover {
+        background-color: #f1f5f8;
+    }
+
+    /* Status Styles */
+    .status {
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .status-active {
+        background-color: #d4f4dd;
+        color: #28a745;
+    }
+
+    .status-blocked {
+        background-color: #fff3cd;
+        color: #ffc107;
+    }
+
+    .status-expired {
+        background-color: #f8d7da;
+        color: #dc3545;
+    }
+
+    /* Buttons */
+    .btn-small {
+        padding: 6px 12px;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-small:hover {
+        opacity: 0.9;
+    }
+
+    .btn-small.btn-primary {
+        background-color: #07003f;
+        color: #fff;
+    }
+
+    .btn-small.btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-small.btn-secondary {
+        margin-left: 5px;
+        background-color: #17466c;
+        color: #fff;
+    }
+
+    /* Actions Box */
+    .actions-box {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .actions-box .btn-one {
+        padding: 12px 24px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .actions-box .btn-one:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .cards-list .table th,
+        .cards-list .table td {
+            font-size: 12px;
+        }
+
+        .btn-small {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        .actions-box .btn-one {
+            width: 100%;
+            font-size: 14px;
+        }
+    }
+</style>

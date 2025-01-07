@@ -3,6 +3,7 @@ import {PortefeuilleDto} from "../model/Portefeuille.model";
 import {PortefeuilleService} from "../services/portefeuille-service/portefeuille.service";
 import {AlertDialogComponent} from "../alert-dialog/alert-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {AuthService} from "../../services/auth-service/auth.service";
 
 @Component({
   selector: 'app-portefeuille-list',
@@ -11,14 +12,14 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class PortefeuilleListComponent implements OnInit {
   portefeuilles: PortefeuilleDto[] = [];
-constructor(private portefeuilleService: PortefeuilleService,private cdr:ChangeDetectorRef,private dialog: MatDialog) {
+constructor(private userService:AuthService,private portefeuilleService: PortefeuilleService,private cdr:ChangeDetectorRef,private dialog: MatDialog) {
 }
   ngOnInit(): void {
     this.loadPortefeuilles();
   }
 
   loadPortefeuilles(): void {
-    this.portefeuilleService.recupererPortefeuilles(1).subscribe({
+    this.portefeuilleService.recupererPortefeuilles(this.userService.getUserId()).subscribe({
       next: (data) => {
         this.portefeuilles = data;
         console.log('Portefeuilles récupérés:', this.portefeuilles);

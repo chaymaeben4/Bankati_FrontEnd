@@ -15,6 +15,7 @@ import {CreateDepenseComponent} from "./create-depense/create-depense.component"
 import {AlimenterDepenseComponent} from "./alimenter-depense/alimenter-depense.component";
 import {CreatePortefeuilleComponent} from "./create-portefeuille/create-portefeuille.component";
 import {AlimenterPortefeuilleComponent} from "./alimenter-portefeuille/alimenter-portefeuille.component";
+import {DashboardComponent} from "./paiements_recurrents/dashboard/dashboard.component";
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path:'createDepense',component: CreateDepenseComponent},
   {path:'alimenterDepense/:id',component: AlimenterDepenseComponent},
   {path:'createPortefeuille',component: CreatePortefeuilleComponent},
-  {path:'alimenterPortefeuille/:id/:devise',component: AlimenterPortefeuilleComponent}
+  {path:'alimenterPortefeuille/:id/:devise',component: AlimenterPortefeuilleComponent},
+  {path: 'paiements_recurrents' , component : DashboardComponent}
   ]
 
 

@@ -8,6 +8,7 @@ import {AlertDialogComponent} from "../alert-dialog/alert-dialog.component";
 import {Devise} from "../model/devise.enum";
 import {CmiService} from "../services/cmi-service/cmi.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth-service/auth.service";
 
 @Component({
   selector: 'app-create-portefeuille',
@@ -17,9 +18,10 @@ import {Router} from "@angular/router";
 export class CreatePortefeuilleComponent implements OnInit {
   devises = Object.values(Devise);
   portefeuilleForm!: FormGroup;
-  userId: number= 1;
+  userId: number= this.userService.getUserId();
 
   constructor(
+    private userService: AuthService,
     private fb: FormBuilder,
     private portefeuilleService: PortefeuilleService,
     private dialog: MatDialog,

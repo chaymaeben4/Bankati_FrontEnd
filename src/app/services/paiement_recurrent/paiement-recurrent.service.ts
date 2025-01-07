@@ -16,4 +16,7 @@ export class PaiementRecurrentService {
     return this.http.post(this.apiUrl, dto, { responseType: 'text' });
   }
 
+  getPaiementsByUserId(userId: number): Observable<PaiementRecurrent[]> {
+    return this.http.get<PaiementRecurrent[]>(`${this.apiUrl}/user/${userId}`);
+  }
 }

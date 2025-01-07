@@ -10,6 +10,20 @@ import {Fournisseur} from "../../../classes/enum/Fournisseur";
   styleUrl: './creer-paiement-recurrent.component.css'
 })
 export class CreerPaiementRecurrentComponent {
+    isVisible = false;
+    title = '';
+    message = '';
+
+    showAlert(title: string, message: string): void {
+        this.title = title;
+        this.message = message;
+        this.isVisible = true;
+    }
+
+    closeAlert(): void {
+        this.isVisible = false;
+    }
+
     paiementData: PaiementRecurrent = new PaiementRecurrent(0,Fournisseur.INWI, 1, '', Devise.USD, 0, '', new Date(0));  // Date valide (1er janvier 1970)
 
     fournisseurs = Object.keys(Fournisseur).map(key => ({
@@ -21,11 +35,11 @@ export class CreerPaiementRecurrentComponent {
   onSubmit() {
     this.paiementService.createRecurringPayment(this.paiementData).subscribe(
         response => {
-          alert(response)
+          this.showAlert('',response)
           // Traitez la réponse ici, par exemple afficher un message de succès
         },
         error => {
-          console.error('Erreur lors de la création du paiement:', error);
+          this.showAlert('Erreur lors de la création du paiement:', error);
           // Traitez l'erreur ici
         }
     );

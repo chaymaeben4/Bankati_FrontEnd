@@ -1,0 +1,33 @@
+.logo-img {
+  width: 120px; /* Ajustez la taille selon vos besoins */
+  height: auto;
+  margin-right: 80px;
+  margin-top: -15px;
+}
+
+
+.menu-container {
+  display: flex;
+  align-items: center;
+}
+
+
+.main-menu__list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.main-menu__list li {
+  margin: 0 15px; /* Espacement entre les liens du menu */
+}
+.main-menu__list a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333; /* Couleur du texte */
+}
+
+
+
