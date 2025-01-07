@@ -1,135 +1,136 @@
 <!-- Formulaire Informations personnelles et Pièces jointes -->
 <div id="infoForm" class="login-form-overlay">
-    <div class="login-form-container">
-        <div class="login-form-header">
-            <h2>Formulaire</h2>
-            <span class="close-btn">&times;</span>
-        </div>
-        <form>
-            <!-- Informations personnelles -->
-            <h3>Informations personnelles</h3>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="nom">Nom *</label>
-                    <input type="text" id="nom" placeholder="Entrez votre nom" required />
-                </div>
-                <div class="form-group">
-                    <label for="prenom">Prénom *</label>
-                    <input type="text" id="prenom" placeholder="Entrez votre prénom" required />
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="piece-identite">Pièce d'identité *</label>
-                    <select id="piece-identite" required>
-                        <option value="CIN">C.I.N</option>
-                        <option value="Passeport">Passeport</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="num-piece">N° pièce d'identité *</label>
-                    <input type="text" id="num-piece" placeholder="Entrez votre N° de pièce" required />
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="date-naissance">Date de naissance *</label>
-                    <input type="date" id="date-naissance" required />
-                </div>
-                <div class="form-group">
-                    <label for="adresse">Adresse *</label>
-                    <input type="text" id="adresse" placeholder="Entrez votre adresse" required />
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" placeholder="Entrez votre email" required />
-                </div>
-                <div class="form-group">
-                    <label for="confirm-email">Confirmation Email *</label>
-                    <input type="email" id="confirm-email" placeholder="Confirmez votre email" required />
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="telephone">Numéro de téléphone *</label>
-                    <input type="tel" id="telephone" placeholder="Entrez votre numéro de téléphone" required />
-                </div>
-                <div class="form-group">
-                    <label for="immatriculation">N° d'immatriculation *</label>
-                    <input type="text" id="immatriculation" placeholder="Entrez votre N° d'immatriculation" required />
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="patente">N° de patente *</label>
-                    <input type="text" id="patente" placeholder="Entrez votre N° de patente" required />
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" id="description" placeholder="Entrez une description" />
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label for="fichier">Fichier</label>
-                    <input type="file" id="fichier" />
-                </div>
-                <div class="form-group"></div> <!-- Espace vide pour aligner -->
-            </div>
-
-            <!-- Actions -->
-            <div class="form-actions">
-                <button type="submit" class="btn-one">Enregistrer</button>
-                <button type="button" class="btn-one btn-black">Annuler</button>
-            </div>
-        </form>
+  <div class="login-form-container">
+    <div class="login-form-header">
+      <h2>Formulaire</h2>
+      <span class="close-btn" (click)="onCancel()">&times;</span>
     </div>
+    <!-- Formulaire lié au FormGroup, utilisation de ngSubmit -->
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <!-- Informations personnelles -->
+      <h3>Informations personnelles</h3>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="nom">Nom *</label>
+          <input formControlName="nom" id="nom" placeholder="Entrez votre nom" />
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom *</label>
+          <input formControlName="prenom" id="prenom" placeholder="Entrez votre prénom" />
+        </div>
+      </div>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="pieceIdentite">Pièce d'identité *</label>
+          <select formControlName="pieceIdentite" id="pieceIdentite">
+            <option value="CIN">C.I.N</option>
+            <option value="Passeport">Passeport</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="numPiece">N° pièce d'identité *</label>
+          <input formControlName="numPiece" id="numPiece" placeholder="Entrez votre N° de pièce" />
+        </div>
+      </div>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="dateNaissance">Date de naissance *</label>
+          <input formControlName="dateNaissance" type="date" id="dateNaissance" />
+        </div>
+        <div class="form-group">
+          <label for="adresse">Adresse *</label>
+          <input formControlName="adresse" id="adresse" placeholder="Entrez votre adresse" />
+        </div>
+      </div>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input formControlName="email" type="email" id="email" placeholder="Entrez votre email" />
+        </div>
+        <div class="form-group">
+          <label for="confirmEmail">Confirmation Email *</label>
+          <input formControlName="confirmEmail" type="email" id="confirmEmail" placeholder="Confirmez votre email" />
+        </div>
+      </div>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="telephone">Numéro de téléphone *</label>
+          <input formControlName="telephone" type="tel" id="telephone" placeholder="Entrez votre numéro de téléphone" />
+        </div>
+        <div class="form-group">
+          <label for="immatriculation">N° d'immatriculation *</label>
+          <input formControlName="immatriculation" id="immatriculation" placeholder="Entrez votre N° d'immatriculation" />
+        </div>
+      </div>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="patente">N° de patente *</label>
+          <input formControlName="patente" id="patente" placeholder="Entrez votre N° de patente" />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input formControlName="description" id="description" placeholder="Entrez une description" />
+        </div>
+      </div>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="fichier">Fichier</label>
+          <input formControlName="fichier" type="file" id="fichier" />
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn-one">Enregistrer</button>
+        <button (click)="onCancel()" type="button" class="btn-one btn-black">Annuler</button>
+      </div>
+    </form>
+  </div>
 </div>
 
+
 <style>
-    .form-group-row {
-        display: flex;
-        gap: 20px; /* Espacement entre les colonnes */
-        margin-bottom: 15px;
-    }
+  .form-group-row {
+    display: flex;
+    gap: 20px; /* Espacement entre les colonnes */
+    margin-bottom: 15px;
+  }
 
-    .form-group-row .form-group {
-        flex: 1; /* Les colonnes prennent le même espace */
-    }
+  .form-group-row .form-group {
+    flex: 1; /* Les colonnes prennent le même espace */
+  }
 
-    .form-group label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-    }
+  .form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
 
-    .form-group input,
-    .form-group select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
-    .form-actions {
-        margin-top: 20px;
-        display: flex;
-        gap: 10px;
-    }
+  .form-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
 
-    .btn-one {
-        padding: 10px 15px;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        background-color: #f1c40f;
-        color: #fff;
-    }
+  .btn-one {
+    padding: 10px 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f1c40f;
+    color: #fff;
+  }
 
-    .btn-one.btn-black {
-        background-color: #e74c3c;
-    }
+  .btn-one.btn-black {
+    background-color: #e74c3c;
+  }
 </style>

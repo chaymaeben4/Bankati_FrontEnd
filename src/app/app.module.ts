@@ -41,6 +41,7 @@ import { LoginComponent } from './login/login.component';
         AgentModule,
         HttpClientModule,
         ReactiveFormsModule,
+      FormsModule
 
     ],
     providers: [
